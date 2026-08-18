@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PEAS環境觀測站網站範本：呈現AQI、PM2.5、PM10、氣象與趨勢圖表。">
+  <title>PEAS 環境觀測站</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="template-alert">【本頁為網站範本，正式發布前請更新聯絡方式、測站資訊、即時數據及公告內容。】</div>
+
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="#top"><span class="brand-mark">P</span><span><strong>PEAS 環境觀測站</strong><small>PEAS ENVIRONMENT OBSERVATORY</small></span></a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mainNav">☰ 選單</button>
+      <nav id="mainNav" class="main-nav">
+        <a href="#realtime">即時觀測</a><a href="#trend">趨勢圖表</a><a href="#about">測站介紹</a><a href="#aqi">AQI說明</a><a href="#source">官方資訊</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="top">
+      <div class="hero-copy">
+        <span class="eyebrow">AIR × WEATHER × OPEN DATA</span>
+        <h1>看懂環境數據，<br><em>從呼吸的每一刻開始。</em></h1>
+        <p>PEAS 環境觀測站以簡單、清楚的方式呈現空氣品質與氣象資訊，讓民眾快速掌握 PM₂.₅、PM₁₀、AQI、溫度、濕度與風況。</p>
+        <div class="hero-actions"><a class="btn primary" href="#realtime">查看觀測資訊</a><a class="btn light" href="#aqi">AQI 怎麼看？</a></div>
+        <div class="hero-note"><span class="status-dot"></span>網頁數值目前為「示範資料」，正式上線請串接實際 PEAS 資料來源。</div>
+      </div>
+      <div class="hero-photo">
+        <img src="https://www-ws.gov.taipei/001/Upload/297/relpic/10162/4123075/e46a0b29-c372-4786-b2ae-3d57e9a0b635.jpg" alt="空氣品質監測站示意照片">
+        <div class="photo-caption"><strong>環境觀測 × 即時資訊</strong><span>照片為空氣品質監測站示意</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="realtime">
+      <div class="section-head"><div><span class="section-kicker">REAL-TIME OVERVIEW</span><h2>現在的環境狀況</h2></div><div class="demo-badge">示範資料｜非即時監測值</div></div>
+      <div class="overview-grid">
+        <article class="aqi-card">
+          <div class="aqi-top"><span>AQI 空氣品質指標</span><span class="aqi-status">普通</span></div>
+          <div class="aqi-value">62</div>
+          <p>空氣品質可接受；極少數對污染物特別敏感者可留意自身狀況。</p>
+          <div class="aqi-scale"><span class="good"></span><span class="moderate active"></span><span class="sensitive"></span><span class="unhealthy"></span><span class="very"></span><span class="hazard"></span></div>
+        </article>
+        <div class="metric-grid">
+          <article class="metric-card"><p>PM₂.₅</p><strong>18</strong><span>μg/m³</span><small>細懸浮微粒</small></article>
+          <article class="metric-card"><p>PM₁₀</p><strong>35</strong><span>μg/m³</span><small>懸浮微粒</small></article>
+          <article class="metric-card"><p>溫度</p><strong>29.4</strong><span>°C</span><small>環境氣溫</small></article>
+          <article class="metric-card"><p>相對濕度</p><strong>72</strong><span>%</span><small>Relative Humidity</small></article>
+          <article class="metric-card"><p>風速</p><strong>1.8</strong><span>m/s</span><small>平均風速</small></article>
+          <article class="metric-card"><p>風向</p><strong>NE</strong><span>東北</span><small>主要風向</small></article>
+        </div>
+      </div>
+      <div class="update-line"><span>資料更新時間：2026/08/18 09:00（示範）</span><span>測站狀態：● 正常運作（示範）</span></div>
+    </section>
+
+    <section class="trend-bg" id="trend"><div class="section">
+      <div class="section-head"><div><span class="section-kicker">DATA TREND</span><h2>用圖表看一天的變化</h2></div><p>下列圖表為版面示範資料，正式發布時可改為 API 或 JSON 即時資料。</p></div>
+      <div class="chart-grid">
+        <article class="chart-card wide"><div class="chart-card-head"><div><span>近 24 小時</span><h3>AQI 趨勢</h3></div></div><canvas id="aqiTrend" width="900" height="320"></canvas></article>
+        <article class="chart-card"><div class="chart-card-head"><div><span>今日時數</span><h3>空品等級分布</h3></div></div><div class="donut-layout"><canvas id="airPie" width="260" height="260"></canvas><div class="pie-legend"><div><i class="lg-good"></i><span>良好</span><b>8 小時</b></div><div><i class="lg-mod"></i><span>普通</span><b>14 小時</b></div><div><i class="lg-sens"></i><span>敏感族群</span><b>2 小時</b></div></div></div></article>
+        <article class="chart-card"><div class="chart-card-head"><div><span>顆粒物</span><h3>PM₂.₅ / PM₁₀ 比較</h3></div></div><div class="compare-bars"><div class="compare-row"><div><strong>PM₂.₅</strong><span>18 μg/m³</span></div><div class="track"><i style="--w:45%"></i></div></div><div class="compare-row"><div><strong>PM₁₀</strong><span>35 μg/m³</span></div><div class="track"><i style="--w:72%"></i></div></div></div><div class="explain-box">PM₂.₅ 粒徑較小，可深入呼吸系統；正式上線時建議保留單位與更新時間。</div></article>
+      </div>
+    </div></section>
+
+    <section class="station-showcase" id="about">
+      <div class="station-photo"><img src="https://www-ws.gov.taipei/001/Upload/297/relpic/10162/4123075/e46a0b29-c372-4786-b2ae-3d57e9a0b635.jpg" alt="空氣品質監測設備示意"></div>
+      <div class="station-copy"><span class="section-kicker light">ABOUT PEAS</span><h2>PEAS 觀測站在做什麼？</h2><p>本網站以「環境觀測資訊」為核心設計。正式版本可依實際 PEAS 設備，放入測站位置、設備照片、感測器型號、監測頻率、資料傳輸方式與維護資訊。</p><div class="station-features"><div><span>01</span><strong>持續觀測</strong><p>定時蒐集環境數值，協助掌握不同時段變化。</p></div><div><span>02</span><strong>數據視覺化</strong><p>將複雜監測數據轉成大字體資訊卡與趨勢圖。</p></div><div><span>03</span><strong>民眾易讀</strong><p>以 AQI 分級、圖示與生活化文字降低閱讀門檻。</p></div></div></div>
+    </section>
+
+    <section class="section" id="aqi">
+      <div class="section-head"><div><span class="section-kicker">AQI GUIDE</span><h2>AQI 顏色怎麼看？</h2></div><p>AQI 是將主要污染物依健康影響換算後，以最大副指標作為該測站 AQI。</p></div>
+      <div class="aqi-guide-grid"><article class="guide good"><span>0–50</span><strong>良好</strong><p>污染程度低或無污染。</p></article><article class="guide moderate"><span>51–100</span><strong>普通</strong><p>空氣品質可接受。</p></article><article class="guide sensitive"><span>101–150</span><strong>對敏感族群不健康</strong><p>敏感族群可能受到影響。</p></article><article class="guide unhealthy"><span>151–200</span><strong>對所有族群不健康</strong><p>所有人健康可能開始受到影響。</p></article><article class="guide very"><span>201–300</span><strong>非常不健康</strong><p>所有人都可能受到較嚴重健康影響。</p></article><article class="guide hazard"><span>301–500</span><strong>危害</strong><p>健康警報，應特別留意防護資訊。</p></article></div>
+      <div class="aqi-note">AQI 分級與健康意義依環境部空氣品質監測網現行說明整理；正式網站應連結或串接官方最新規範。</div>
+    </section>
+
+    <section class="public-section"><div class="public-inner"><span class="section-kicker light">EASY TO UNDERSTAND</span><h2>今天出門前，先看一眼空氣。</h2><p>透過清楚的顏色、數字與圖表，讓環境資訊真正成為每個人都用得到的生活資訊。</p><div class="public-cards"><article><span>🚶</span><strong>一般民眾</strong><p>先看 AQI，再安排戶外活動。</p></article><article><span>👵</span><strong>敏感族群</strong><p>AQI 升高時，更應注意身體狀況與活動強度。</p></article><article><span>🏫</span><strong>校園與社區</strong><p>觀察每日趨勢，作為環境教育與活動參考。</p></article></div></div></section>
+
+    <section class="section" id="source">
+      <div class="section-head"><div><span class="section-kicker">OFFICIAL REFERENCE</span><h2>正式資訊與資料來源</h2></div><p>本網站為前端範本，正式即時數據請使用實際 PEAS 資料源或政府公開資料。</p></div>
+      <div class="source-grid"><a class="source-card" href="https://airtw.moenv.gov.tw/" target="_blank" rel="noopener noreferrer"><span>🌤️</span><div><strong>環境部空氣品質監測網</strong><p>查詢全臺即時 AQI、污染物與空品資訊。</p></div><b>↗</b></a><a class="source-card" href="https://airtw.moenv.gov.tw/CHT/Information/Standard/AirQualityIndicatorNew.aspx" target="_blank" rel="noopener noreferrer"><span>📊</span><div><strong>AQI 指標說明</strong><p>查看 AQI 分級、污染物濃度與健康影響。</p></div><b>↗</b></a><a class="source-card" href="https://data.moenv.gov.tw/" target="_blank" rel="noopener noreferrer"><span>💾</span><div><strong>環境資料開放平臺</strong><p>取得測站基本資料與環境開放資料。</p></div><b>↗</b></a></div>
+      <div class="source-warning"><strong>正式上線前請確認：</strong>PEAS 的完整名稱、測站地址、監測項目、設備照片、資料更新頻率、API/JSON資料來源及聯絡方式，再將本頁示範數值替換為正式資料。</div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div><strong>PEAS 環境觀測站</strong><p>環境數據 × 視覺化 × 民眾易讀</p></div><div>【本頁為網站範本，正式發布前請更新聯絡方式、測站資訊、即時數據及公告內容。】</div></footer>
+  <script src="script.js"></script>
+</body>
+</html>
