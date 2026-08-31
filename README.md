@@ -1,37 +1,23 @@
-# PEAS 環境觀測站｜Q版圖片更換版
+# PEAS 環境觀測站｜Q版圖片不跑版修正版
 
-依目前公開網站：
-https://yun2668.github.io/555/
+這一版專門修正 Q 版圖片被裁切、變形、超出卡片或手機版跑位的問題。
 
-以及 GitHub 公開 Repository：
-https://github.com/yun2668/555
+## 原因
+原本 style.css 對圖片有：
+- `object-fit: cover`
+- 固定 / 最低高度
 
-製作。
+這些設定適合寫實照片，但會裁掉 Q 版插畫。
 
-## 這次更換的圖片
-1. 首頁右側「空氣品質監測站示意照片」
-   → Q版 PEAS 環境監測站＋AQI／PM2.5／溫度／風速插畫
+## 這一版修正
+- 首頁 Q 版圖改為 `object-fit: contain`
+- 測站介紹圖取消固定高度裁切
+- 手機版圖片自動等比例縮放
+- Grid / Flex 子元素加入 `min-width: 0`，避免圖片把版面撐寬
+- 修正 CSS 已直接寫進 index.html
 
-2. 「PEAS 觀測站在做什麼？」左側監測設備照片
-   → Q版監測設備＋即時傳輸＋數據圖表＋設備維護插畫
+## GitHub 使用
+只要把 Repository `555` 裡的 `index.html` 完整換成這一份即可。
+原本的 style.css 與 Script.js 不需要修改。
 
-## 最簡單的 GitHub 更新方式
-只需要把 Repository 裡的 `index.html` 完整換成這份新版。
-
-原本：
-- style.css
-- script.js / Script.js
-
-不需要因為圖片而修改。
-
-## 為什麼這次圖片比較不會消失？
-兩張 Q版 SVG 已直接以 Data URI 內嵌在 index.html，
-所以不依賴臺北市政府外部照片網址，也不需要另外上傳 images/assets 資料夾。
-
-另外附：
-- q-peas-hero.svg
-- q-peas-hero.png
-- q-peas-station.svg
-- q-peas-station.png
-
-可單獨拿去做簡報或網站使用。
+更新後建議按 Ctrl + F5 強制重新整理。
