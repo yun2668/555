@@ -1,23 +1,38 @@
-# PEAS 環境觀測站｜Q版圖片不跑版修正版
+# PEAS 環境觀測站｜Q版圖片＋圖表皆正常版
 
-這一版專門修正 Q 版圖片被裁切、變形、超出卡片或手機版跑位的問題。
+## 找到的真正原因
+GitHub Repository `555` 裡的 JavaScript 檔名是：
 
-## 原因
-原本 style.css 對圖片有：
-- `object-fit: cover`
-- 固定 / 最低高度
+`Script.js`
 
-這些設定適合寫實照片，但會裁掉 Q 版插畫。
+但是原本 `index.html` 寫的是：
 
-## 這一版修正
-- 首頁 Q 版圖改為 `object-fit: contain`
-- 測站介紹圖取消固定高度裁切
-- 手機版圖片自動等比例縮放
-- Grid / Flex 子元素加入 `min-width: 0`，避免圖片把版面撐寬
-- 修正 CSS 已直接寫進 index.html
+`script.js`
 
-## GitHub 使用
-只要把 Repository `555` 裡的 `index.html` 完整換成這一份即可。
-原本的 style.css 與 Script.js 不需要修改。
+GitHub Pages 會區分英文大小寫，因此整支 JavaScript 沒載入，造成：
+- AQI 趨勢圖空白
+- 空品等級分布圓環圖空白
+- 手機選單等 JavaScript 功能也可能失效
 
-更新後建議按 Ctrl + F5 強制重新整理。
+## 這份修正版
+已將 index.html 改為：
+
+`<script src="Script.js"></script>`
+
+另外附上一份重新整理過的 `Script.js`，
+可直接畫出：
+- AQI 近24小時趨勢圖
+- 今日空品等級分布圓環圖
+- 手機版選單
+- 響應式自動調整
+
+## 建議 GitHub 上傳
+這次請同時覆蓋：
+1. `index.html`
+2. `Script.js`
+
+原本 `style.css` 保留即可。
+
+請特別注意：檔名一定要是大寫 S 的 `Script.js`。
+
+上傳後等 GitHub Pages 部署完成，再按 Ctrl + F5。
