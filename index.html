@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PEAS環境觀測站網站範本：呈現AQI、PM2.5、PM10、氣象與趨勢圖表。">
+  <title>PEAS 環境觀測站</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="template-alert">【本頁為網站範本，正式發布前請更新聯絡方式、測站資訊、即時數據及公告內容。】</div>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="#top"><span class="brand-mark">P</span><span><strong>PEAS 環境觀測站</strong><small>PEAS ENVIRONMENT OBSERVATORY</small></span></a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mainNav">☰ 選單</button>
+      <nav id="mainNav" class="main-nav">
+        <a href="#realtime">即時觀測</a><a href="#trend">趨勢圖表</a><a href="#about">測站介紹</a><a href="#aqi">AQI說明</a><a href="#source">官方資訊</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="top">
+      <div class="hero-copy">
+        <span class="eyebrow">AIR × WEATHER × OPEN DATA</span>
+        <h1>看懂環境數據，<br><em>從呼吸的每一刻開始。</em></h1>
+        <p>PEAS 環境觀測站以簡單、清楚的方式呈現空氣品質與氣象資訊，讓民眾快速掌握 PM₂.₅、PM₁₀、AQI、溫度、濕度與風況。</p>
+        <div class="hero-actions"><a class="btn primary" href="#realtime">查看觀測資訊</a><a class="btn light" href="#aqi">AQI 怎麼看？</a></div>
+        <div class="hero-note"><span class="status-dot"></span>網頁數值目前為「示範資料」，正式上線請串接實際 PEAS 資料來源。</div>
+      </div>
+      <div class="hero-photo">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDkwMCI+CjxkZWZzPgogIDxsaW5lYXJHcmFkaWVudCBpZD0ic2t5IiB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMSI+CiAgICA8c3RvcCBzdG9wLWNvbG9yPSIjRERGNUY1Ii8+CiAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNGOEZDRjciLz4KICA8L2xpbmVhckdyYWRpZW50PgogIDxsaW5lYXJHcmFkaWVudCBpZD0ic3RhdGlvbiIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgPHN0b3Agc3RvcC1jb2xvcj0iI0ZGRkZGRiIvPgogICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjRUFGNEYxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8ZmlsdGVyIGlkPSJzaGFkb3ciIHg9Ii0zMCUiIHk9Ii0zMCUiIHdpZHRoPSIxNjAlIiBoZWlnaHQ9IjE4MCUiPgogICAgPGZlRHJvcFNoYWRvdyBkeD0iMCIgZHk9IjE4IiBzdGREZXZpYXRpb249IjE4IiBmbG9vZC1jb2xvcj0iIzE3NEU1NSIgZmxvb2Qtb3BhY2l0eT0iLjE2Ii8+CiAgPC9maWx0ZXI+CjwvZGVmcz4KCjxyZWN0IHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjkwMCIgcng9IjQ4IiBmaWxsPSJ1cmwoI3NreSkiLz4KPGNpcmNsZSBjeD0iMTAwMCIgY3k9IjEzNSIgcj0iNzgiIGZpbGw9IiNGRkU0OUEiLz4KCjwhLS0g6Zuy5py1IC0tPgo8ZyBmaWxsPSIjZmZmIiBvcGFjaXR5PSIuOTYiPgogIDxlbGxpcHNlIGN4PSIxNTUiIGN5PSIxNTAiIHJ4PSI4MCIgcnk9IjM4Ii8+CiAgPGVsbGlwc2UgY3g9IjIyMCIgY3k9IjE1NCIgcng9IjU2IiByeT0iMzMiLz4KICA8ZWxsaXBzZSBjeD0iMTk1IiBjeT0iMTE2IiByeD0iNDgiIHJ5PSI0NCIvPgogIDxlbGxpcHNlIGN4PSI4MzAiIGN5PSIxMTgiIHJ4PSI2OCIgcnk9IjMzIi8+CiAgPGVsbGlwc2UgY3g9Ijg4NSIgY3k9IjEyMiIgcng9IjQ4IiByeT0iMjkiLz4KICA8ZWxsaXBzZSBjeD0iODYwIiBjeT0iOTAiIHJ4PSI0MyIgcnk9IjM4Ii8+CjwvZz4KCjwhLS0g6YGg5pa55Z+O5biCIC0tPgo8ZyBvcGFjaXR5PSIuNzQiPgogIDxyZWN0IHg9IjYwIiB5PSI0MTAiIHdpZHRoPSI5MCIgaGVpZ2h0PSIyNTAiIHJ4PSI4IiBmaWxsPSIjQjlEQ0UzIi8+CiAgPHJlY3QgeD0iMTYzIiB5PSIzNTUiIHdpZHRoPSIxMDQiIGhlaWdodD0iMzA1IiByeD0iOSIgZmlsbD0iI0QyRThFQyIvPgogIDxyZWN0IHg9IjI4MCIgeT0iNDUyIiB3aWR0aD0iOTIiIGhlaWdodD0iMjA4IiByeD0iOCIgZmlsbD0iI0I3RDlFMCIvPgogIDxyZWN0IHg9Ijg0NCIgeT0iMzgwIiB3aWR0aD0iOTQiIGhlaWdodD0iMjgwIiByeD0iOSIgZmlsbD0iI0M2RTNFNyIvPgogIDxyZWN0IHg9Ijk1MSIgeT0iNDMwIiB3aWR0aD0iODIiIGhlaWdodD0iMjMwIiByeD0iOCIgZmlsbD0iI0I4RDlFMSIvPgogIDxyZWN0IHg9IjEwNDUiIHk9IjM0MCIgd2lkdGg9IjkyIiBoZWlnaHQ9IjMyMCIgcng9IjkiIGZpbGw9IiNENUVBRUQiLz4KPC9nPgoKPCEtLSDojYnlnLAgLS0+CjxwYXRoIGQ9Ik0wIDYyNUMxODAgNTY1IDMzNSA2MjUgNTA1IDU5NUM3MDAgNTYwIDg3MCA2MTAgMTIwMCA1MzVWOTAwSDBaIiBmaWxsPSIjQkZFNUI4Ii8+CjxwYXRoIGQ9Ik0wIDY5MEMxOTAgNjQwIDM0NSA2ODAgNTQwIDY1MkM3NDIgNjIyIDk0MSA2NjcgMTIwMCA2MTBWOTAwSDBaIiBmaWxsPSIjQTZEOTlFIi8+Cgo8IS0tIOebo+a4rOermeS4u+mrlCAtLT4KPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzc1IDE4NSkiIGZpbHRlcj0idXJsKCNzaGFkb3cpIj4KICA8cmVjdCB4PSIwIiB5PSIxNTAiIHdpZHRoPSI0MzAiIGhlaWdodD0iNDAwIiByeD0iNDIiIGZpbGw9InVybCgjc3RhdGlvbikiIHN0cm9rZT0iI0I4RDlENCIgc3Ryb2tlLXdpZHRoPSI1Ii8+CiAgPHJlY3QgeD0iOTAiIHk9IjAiIHdpZHRoPSIyNTAiIGhlaWdodD0iMTkwIiByeD0iMzAiIGZpbGw9IiMxNzNFNEEiLz4KICA8cmVjdCB4PSIxMTIiIHk9IjI1IiB3aWR0aD0iMjA2IiBoZWlnaHQ9IjEzNSIgcng9IjIyIiBmaWxsPSIjMjEzNDNDIi8+CiAgPCEtLSDooajmg4UgLS0+CiAgPGNpcmNsZSBjeD0iMTc1IiBjeT0iODciIHI9IjEzIiBmaWxsPSIjZmZmIi8+CiAgPGNpcmNsZSBjeD0iMjU1IiBjeT0iODciIHI9IjEzIiBmaWxsPSIjZmZmIi8+CiAgPGNpcmNsZSBjeD0iMTc4IiBjeT0iOTAiIHI9IjUiIGZpbGw9IiMxNzNFNEEiLz4KICA8Y2lyY2xlIGN4PSIyNTgiIGN5PSI5MCIgcj0iNSIgZmlsbD0iIzE3M0U0QSIvPgogIDxwYXRoIGQ9Ik0xOTAgMTIwQzIxMiAxNDEgMjQwIDE0MSAyNjIgMTIwIiBzdHJva2U9IiM3M0QyQzEiIHN0cm9rZS13aWR0aD0iMTAiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxlbGxpcHNlIGN4PSIxNDUiIGN5PSIxMTkiIHJ4PSIxNyIgcnk9IjEwIiBmaWxsPSIjRjZCN0FBIiBvcGFjaXR5PSIuOCIvPgogIDxlbGxpcHNlIGN4PSIyODQiIGN5PSIxMTkiIHJ4PSIxNyIgcnk9IjEwIiBmaWxsPSIjRjZCN0FBIiBvcGFjaXR5PSIuOCIvPgoKICA8IS0tIOmggumDqOaEn+a4rOWZqCAtLT4KICA8cmVjdCB4PSIxOTciIHk9Ii05MiIgd2lkdGg9IjM3IiBoZWlnaHQ9IjkyIiByeD0iMTUiIGZpbGw9IiM1NDcxN0EiLz4KICA8Y2lyY2xlIGN4PSIyMTUiIGN5PSItMTA4IiByPSIzMSIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjNjc4ODkwIiBzdHJva2Utd2lkdGg9IjciLz4KICA8cGF0aCBkPSJNMjAwIC0xMDhIMjMwTTIxNSAtMTIzVi05MyIgc3Ryb2tlPSIjMTY4QTc5IiBzdHJva2Utd2lkdGg9IjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgoKICA8IS0tIOmdouadvyAtLT4KICA8cmVjdCB4PSI2OCIgeT0iMjI1IiB3aWR0aD0iMjk0IiBoZWlnaHQ9IjEyMiIgcng9IjI0IiBmaWxsPSIjRTlGN0Y0Ii8+CiAgPHRleHQgeD0iMTA0IiB5PSIyNjciIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC13ZWlnaHQ9IjgwMCIgZm9udC1zaXplPSIzMCIgZmlsbD0iIzE2OEE3OSI+QVFJIDYyPC90ZXh0PgogIDxyZWN0IHg9IjEwNCIgeT0iMjkxIiB3aWR0aD0iMjEyIiBoZWlnaHQ9IjE4IiByeD0iOSIgZmlsbD0iI0Q1RTZFMiIvPgogIDxyZWN0IHg9IjEwNCIgeT0iMjkxIiB3aWR0aD0iMTAzIiBoZWlnaHQ9IjE4IiByeD0iOSIgZmlsbD0iI0YwQzk0QiIvPgogIDxjaXJjbGUgY3g9IjEwNyIgY3k9IjM5MCIgcj0iMjQiIGZpbGw9IiM1NkI4NzkiLz4KICA8dGV4dCB4PSI5NiIgeT0iMzk4IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtd2VpZ2h0PSI5MDAiIGZvbnQtc2l6ZT0iMjMiIGZpbGw9IiNmZmYiPuKckzwvdGV4dD4KICA8dGV4dCB4PSIxNDUiIHk9IjQwMCIgZm9udC1mYW1pbHk9Ik1pY3Jvc29mdCBKaGVuZ0hlaSxBcmlhbCIgZm9udC13ZWlnaHQ9IjgwMCIgZm9udC1zaXplPSIyNSIgZmlsbD0iIzM3NUE2MiI+55uj5ris5LitPC90ZXh0PgoKICA8IS0tIOiFs+aetiAtLT4KICA8cGF0aCBkPSJNNzUgNTUwTDQwIDY1ME0zNTUgNTUwTDM5MCA2NTAiIHN0cm9rZT0iIzY2ODA4NSIgc3Ryb2tlLXdpZHRoPSIxOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPHBhdGggZD0iTTIwIDY1Mkg0MTAiIHN0cm9rZT0iIzY2ODA4NSIgc3Ryb2tlLXdpZHRoPSIyMCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjwvZz4KCjwhLS0g5ryC5rWu5pW45pOa5rOh5rOhIC0tPgo8ZyBmaWx0ZXI9InVybCgjc2hhZG93KSI+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTEwIDMxNSkiPgogICAgPHJlY3Qgd2lkdGg9IjIzNSIgaGVpZ2h0PSIxMjAiIHJ4PSIzMCIgZmlsbD0iI2ZmZiIvPgogICAgPGNpcmNsZSBjeD0iNTQiIGN5PSI1NCIgcj0iMjciIGZpbGw9IiNFNkY2RjIiLz4KICAgIDx0ZXh0IHg9IjQxIiB5PSI2MyIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjIyIiBmaWxsPSIjMTY4QTc5Ij5QTTwvdGV4dD4KICAgIDx0ZXh0IHg9Ijk1IiB5PSI0OSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjI2IiBmaWxsPSIjMTczRTRBIj5QTeKCgi7igoU8L3RleHQ+CiAgICA8dGV4dCB4PSI5NSIgeT0iODIiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC13ZWlnaHQ9IjgwMCIgZm9udC1zaXplPSIzMCIgZmlsbD0iIzJCNzA4QyI+MTg8L3RleHQ+CiAgPC9nPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDg1MCAyNTUpIj4KICAgIDxyZWN0IHdpZHRoPSIyMzUiIGhlaWdodD0iMTIwIiByeD0iMzAiIGZpbGw9IiNmZmYiLz4KICAgIDxjaXJjbGUgY3g9IjU0IiBjeT0iNTQiIHI9IjI3IiBmaWxsPSIjRkZGMkNGIi8+CiAgICA8dGV4dCB4PSI0MiIgeT0iNjQiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC13ZWlnaHQ9IjkwMCIgZm9udC1zaXplPSIyNyIgZmlsbD0iI0Q3OTYyNCI+wrBDPC90ZXh0PgogICAgPHRleHQgeD0iOTUiIHk9IjQ5IiBmb250LWZhbWlseT0iTWljcm9zb2Z0IEpoZW5nSGVpLEFyaWFsIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjI0IiBmaWxsPSIjMTczRTRBIj7muqvluqY8L3RleHQ+CiAgICA8dGV4dCB4PSI5NSIgeT0iODIiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC13ZWlnaHQ9IjgwMCIgZm9udC1zaXplPSIzMCIgZmlsbD0iIzJCNzA4QyI+MjkuNDwvdGV4dD4KICA8L2c+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoODQ4IDQzMCkiPgogICAgPHJlY3Qgd2lkdGg9IjIzNSIgaGVpZ2h0PSIxMjAiIHJ4PSIzMCIgZmlsbD0iI2ZmZiIvPgogICAgPGNpcmNsZSBjeD0iNTQiIGN5PSI1NCIgcj0iMjciIGZpbGw9IiNFOEYzRkYiLz4KICAgIDxwYXRoIGQ9Ik00MyAzOUM1MiAzMSA2MiAzMSA3MSAzOU0zOSA1M0M1MCA0MyA2NCA0MyA3NSA1M000NyA2OEM1NCA2MiA2MSA2MiA2OCA2OCIgc3Ryb2tlPSIjM0Y4RUMwIiBzdHJva2Utd2lkdGg9IjUiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogICAgPHRleHQgeD0iOTUiIHk9IjQ5IiBmb250LWZhbWlseT0iTWljcm9zb2Z0IEpoZW5nSGVpLEFyaWFsIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjI0IiBmaWxsPSIjMTczRTRBIj7poqjpgJ88L3RleHQ+CiAgICA8dGV4dCB4PSI5NSIgeT0iODIiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC13ZWlnaHQ9IjgwMCIgZm9udC1zaXplPSIzMCIgZmlsbD0iIzJCNzA4QyI+MS44PC90ZXh0PgogIDwvZz4KPC9nPgoKPCEtLSDlsI/mqLkgLS0+CjxnPgogIDxyZWN0IHg9IjExMCIgeT0iNTcwIiB3aWR0aD0iMTgiIGhlaWdodD0iMTI1IiByeD0iOSIgZmlsbD0iIzc4OTI2QiIvPgogIDxjaXJjbGUgY3g9IjExOCIgY3k9IjU1NSIgcj0iNzAiIGZpbGw9IiM3OUM5NkEiLz4KICA8Y2lyY2xlIGN4PSI3MiIgY3k9IjU3OCIgcj0iNDMiIGZpbGw9IiM4RUQzN0IiLz4KICA8cmVjdCB4PSIxMDYwIiB5PSI1NTAiIHdpZHRoPSIxOCIgaGVpZ2h0PSIxNDUiIHJ4PSI5IiBmaWxsPSIjNzg5MjZCIi8+CiAgPGNpcmNsZSBjeD0iMTA2OSIgY3k9IjUyNSIgcj0iNzgiIGZpbGw9IiM3OUM5NkEiLz4KICA8Y2lyY2xlIGN4PSIxMTEzIiBjeT0iNTYyIiByPSI0NyIgZmlsbD0iIzhFRDM3QiIvPgo8L2c+Cgo8IS0tIOa4heaWsOepuuawo+espuiZnyAtLT4KPHBhdGggZD0iTTg0IDc2MEMxNzAgNzE0IDI0NiA3NDIgMzAwIDcwNiIgc3Ryb2tlPSIjNUZDNkI0IiBzdHJva2Utd2lkdGg9IjE0IiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1kYXNoYXJyYXk9IjE4IDE4Ii8+CjxwYXRoIGQ9Ik0yOTEgNzA3TDI2OSA2OTJNMjkxIDcwN0wyNjcgNzIxIiBzdHJva2U9IiM1RkM2QjQiIHN0cm9rZS13aWR0aD0iMTAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgoKPHRleHQgeD0iNzQiIHk9Ijg1IiBmaWxsPSIjMTU3OTY4IiBmb250LWZhbWlseT0iTWljcm9zb2Z0IEpoZW5nSGVpLEFyaWFsIiBmb250LXNpemU9IjM2IiBmb250LXdlaWdodD0iOTAwIj5QRUFTIOeSsOWig+ingOa4rOerme+9nFHniYjnkrDlooPnm6PmuKw8L3RleHQ+Cjwvc3ZnPg==" alt="Q版PEAS空氣品質與氣象環境監測站插畫">
+        <div class="photo-caption"><strong>環境觀測 × 即時資訊</strong><span>Q版環境監測站示意插畫</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="realtime">
+      <div class="section-head"><div><span class="section-kicker">REAL-TIME OVERVIEW</span><h2>現在的環境狀況</h2></div><div class="demo-badge">示範資料｜非即時監測值</div></div>
+      <div class="overview-grid">
+        <article class="aqi-card">
+          <div class="aqi-top"><span>AQI 空氣品質指標</span><span class="aqi-status">普通</span></div>
+          <div class="aqi-value">62</div>
+          <p>空氣品質可接受；極少數對污染物特別敏感者可留意自身狀況。</p>
+          <div class="aqi-scale"><span class="good"></span><span class="moderate active"></span><span class="sensitive"></span><span class="unhealthy"></span><span class="very"></span><span class="hazard"></span></div>
+        </article>
+        <div class="metric-grid">
+          <article class="metric-card"><p>PM₂.₅</p><strong>18</strong><span>μg/m³</span><small>細懸浮微粒</small></article>
+          <article class="metric-card"><p>PM₁₀</p><strong>35</strong><span>μg/m³</span><small>懸浮微粒</small></article>
+          <article class="metric-card"><p>溫度</p><strong>29.4</strong><span>°C</span><small>環境氣溫</small></article>
+          <article class="metric-card"><p>相對濕度</p><strong>72</strong><span>%</span><small>Relative Humidity</small></article>
+          <article class="metric-card"><p>風速</p><strong>1.8</strong><span>m/s</span><small>平均風速</small></article>
+          <article class="metric-card"><p>風向</p><strong>NE</strong><span>東北</span><small>主要風向</small></article>
+        </div>
+      </div>
+      <div class="update-line"><span>資料更新時間：2026/08/18 09:00（示範）</span><span>測站狀態：● 正常運作（示範）</span></div>
+    </section>
+
+    <section class="trend-bg" id="trend"><div class="section">
+      <div class="section-head"><div><span class="section-kicker">DATA TREND</span><h2>用圖表看一天的變化</h2></div><p>下列圖表為版面示範資料，正式發布時可改為 API 或 JSON 即時資料。</p></div>
+      <div class="chart-grid">
+        <article class="chart-card wide"><div class="chart-card-head"><div><span>近 24 小時</span><h3>AQI 趨勢</h3></div></div><canvas id="aqiTrend" width="900" height="320"></canvas></article>
+        <article class="chart-card"><div class="chart-card-head"><div><span>今日時數</span><h3>空品等級分布</h3></div></div><div class="donut-layout"><canvas id="airPie" width="260" height="260"></canvas><div class="pie-legend"><div><i class="lg-good"></i><span>良好</span><b>8 小時</b></div><div><i class="lg-mod"></i><span>普通</span><b>14 小時</b></div><div><i class="lg-sens"></i><span>敏感族群</span><b>2 小時</b></div></div></div></article>
+        <article class="chart-card"><div class="chart-card-head"><div><span>顆粒物</span><h3>PM₂.₅ / PM₁₀ 比較</h3></div></div><div class="compare-bars"><div class="compare-row"><div><strong>PM₂.₅</strong><span>18 μg/m³</span></div><div class="track"><i style="--w:45%"></i></div></div><div class="compare-row"><div><strong>PM₁₀</strong><span>35 μg/m³</span></div><div class="track"><i style="--w:72%"></i></div></div></div><div class="explain-box">PM₂.₅ 粒徑較小，可深入呼吸系統；正式上線時建議保留單位與更新時間。</div></article>
+      </div>
+    </div></section>
+
+    <section class="station-showcase" id="about">
+      <div class="station-photo"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5MDAgOTAwIj4KPGRlZnM+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJiZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPgogICAgPHN0b3Agc3RvcC1jb2xvcj0iIzE1M0Y1MiIvPgogICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMTc2NjVGIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8ZmlsdGVyIGlkPSJzaGFkb3ciIHg9Ii0zMCUiIHk9Ii0zMCUiIHdpZHRoPSIxNjAlIiBoZWlnaHQ9IjE4MCUiPgogICAgPGZlRHJvcFNoYWRvdyBkeD0iMCIgZHk9IjE0IiBzdGREZXZpYXRpb249IjE2IiBmbG9vZC1jb2xvcj0iIzA2MjczNCIgZmxvb2Qtb3BhY2l0eT0iLjI1Ii8+CiAgPC9maWx0ZXI+CjwvZGVmcz4KPHJlY3Qgd2lkdGg9IjkwMCIgaGVpZ2h0PSI5MDAiIGZpbGw9InVybCgjYmcpIi8+Cgo8IS0tIOiDjOaZr+enkeaKgOe3miAtLT4KPGcgb3BhY2l0eT0iLjE0IiBzdHJva2U9IiNBNUUzREMiIHN0cm9rZS13aWR0aD0iMyI+CiAgPHBhdGggZD0iTTUwIDE1MEgyNDVMMzIwIDIyNUg1MjBMNTkwIDE2MEg4NTAiLz4KICA8cGF0aCBkPSJNMzAgNjk1SDIxMEwyNzAgNjI1SDUxMEw1ODAgNzAwSDg3MCIvPgogIDxjaXJjbGUgY3g9IjI0NSIgY3k9IjE1MCIgcj0iOCIgZmlsbD0iI0E1RTNEQyIvPgogIDxjaXJjbGUgY3g9IjUyMCIgY3k9IjIyNSIgcj0iOCIgZmlsbD0iI0E1RTNEQyIvPgogIDxjaXJjbGUgY3g9IjU4MCIgY3k9IjcwMCIgcj0iOCIgZmlsbD0iI0E1RTNEQyIvPgo8L2c+Cgo8IS0tIOWkp+WeiyBR54mI5ris56uZIC0tPgo8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyMDUgMTIwKSIgZmlsdGVyPSJ1cmwoI3NoYWRvdykiPgogIDxyZWN0IHg9Ijc1IiB5PSIxMzUiIHdpZHRoPSIzNDAiIGhlaWdodD0iNDcwIiByeD0iNTIiIGZpbGw9IiNGNkZCRkEiIHN0cm9rZT0iI0E5RDdEMSIgc3Ryb2tlLXdpZHRoPSI2Ii8+CiAgPHJlY3QgeD0iMTM1IiB5PSIwIiB3aWR0aD0iMjIwIiBoZWlnaHQ9IjE3MCIgcng9IjM0IiBmaWxsPSIjMUIzMzQwIi8+CiAgPHJlY3QgeD0iMTU2IiB5PSIyMyIgd2lkdGg9IjE3OCIgaGVpZ2h0PSIxMjAiIHJ4PSIyMiIgZmlsbD0iIzIyMzk0MyIvPgogIDxjaXJjbGUgY3g9IjIwNSIgY3k9Ijc4IiByPSIxMiIgZmlsbD0iI2ZmZiIvPgogIDxjaXJjbGUgY3g9IjI4MyIgY3k9Ijc4IiByPSIxMiIgZmlsbD0iI2ZmZiIvPgogIDxwYXRoIGQ9Ik0yMTkgMTA4QzIzNiAxMjYgMjU1IDEyNiAyNzIgMTA4IiBzdHJva2U9IiM3NEQ1QzQiIHN0cm9rZS13aWR0aD0iOSIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CgogIDwhLS0g5oSf5ris5ZmoIC0tPgogIDxyZWN0IHg9IjIyNiIgeT0iLTEwNSIgd2lkdGg9IjM4IiBoZWlnaHQ9IjEwNSIgcng9IjE1IiBmaWxsPSIjNzY5MDk2Ii8+CiAgPGNpcmNsZSBjeD0iMjQ1IiBjeT0iLTEyMiIgcj0iMzQiIGZpbGw9IiNGNkZCRkEiIHN0cm9rZT0iIzdBOTg5RCIgc3Ryb2tlLXdpZHRoPSI3Ii8+CiAgPHBhdGggZD0iTTIyOSAtMTIySDI2MU0yNDUgLTEzOFYtMTA2IiBzdHJva2U9IiM1NUMxQUUiIHN0cm9rZS13aWR0aD0iNyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CgogIDwhLS0g6LOH6KiK6Z2i5p2/IC0tPgogIDxyZWN0IHg9IjEyMiIgeT0iMjM1IiB3aWR0aD0iMjQ2IiBoZWlnaHQ9IjE2MCIgcng9IjI4IiBmaWxsPSIjRTVGNUYxIi8+CiAgPHRleHQgeD0iMTUyIiB5PSIyODAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC13ZWlnaHQ9IjkwMCIgZm9udC1zaXplPSIzMiIgZmlsbD0iIzE1ODY3NCI+QVFJIDYyPC90ZXh0PgogIDx0ZXh0IHg9IjE1MiIgeT0iMzI2IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtd2VpZ2h0PSI4MDAiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiMzMTVCNjciPlBNMi41IDE4PC90ZXh0PgogIDx0ZXh0IHg9IjE1MiIgeT0iMzY1IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtd2VpZ2h0PSI4MDAiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiMzMTVCNjciPlRFTVAgMjkuNDwvdGV4dD4KCiAgPCEtLSDlnJbnpLrmjInpiJUgLS0+CiAgPGNpcmNsZSBjeD0iMTY1IiBjeT0iNDU1IiByPSIzMyIgZmlsbD0iI0Y0Qzk0RCIvPgogIDxjaXJjbGUgY3g9IjI0NSIgY3k9IjQ1NSIgcj0iMzMiIGZpbGw9IiM2NkJGODAiLz4KICA8Y2lyY2xlIGN4PSIzMjUiIGN5PSI0NTUiIHI9IjMzIiBmaWxsPSIjNUFBOUNGIi8+CiAgPHBhdGggZD0iTTE1MiA0NTZIMTc4IiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iNyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPHBhdGggZD0iTTIzMyA0NTZMMjQyIDQ2NUwyNTkgNDQ0IiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iNyIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CiAgPHBhdGggZD0iTTMxMCA0NjJDMzIwIDQ0OSAzMzAgNDQ5IDM0MCA0NjIiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSI2IiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KCiAgPCEtLSDohbMgLS0+CiAgPHBhdGggZD0iTTEzNSA2MDVMMTAwIDcyME0zNTUgNjA1TDM5MCA3MjAiIHN0cm9rZT0iIzdEOTU5QSIgc3Ryb2tlLXdpZHRoPSIyMCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPHBhdGggZD0iTTY1IDcyMkg0MjUiIHN0cm9rZT0iIzdEOTU5QSIgc3Ryb2tlLXdpZHRoPSIyMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjwvZz4KCjwhLS0g6LOH5paZ5YKz6Ly45rOh5rOhIC0tPgo8ZyBmaWx0ZXI9InVybCgjc2hhZG93KSI+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzUgMjcwKSI+CiAgICA8cmVjdCB3aWR0aD0iMTgwIiBoZWlnaHQ9IjEzMiIgcng9IjI4IiBmaWxsPSIjZmZmIi8+CiAgICA8Y2lyY2xlIGN4PSI1MCIgY3k9IjUxIiByPSIyNSIgZmlsbD0iI0U1RjVGMSIvPgogICAgPHBhdGggZD0iTTM1IDU4QzQ0IDQ2IDU1IDQ2IDY0IDU4TTQxIDQzQzQ3IDM2IDUzIDM2IDU5IDQzIiBzdHJva2U9IiMxNzhDNzkiIHN0cm9rZS13aWR0aD0iNSIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgICA8dGV4dCB4PSI4OCIgeT0iNDgiIGZvbnQtZmFtaWx5PSJNaWNyb3NvZnQgSmhlbmdIZWksQXJpYWwiIGZvbnQtd2VpZ2h0PSI5MDAiIGZvbnQtc2l6ZT0iMjIiIGZpbGw9IiMxNzNFNEEiPuWNs+aZguWCs+i8uDwvdGV4dD4KICAgIDx0ZXh0IHg9IjM0IiB5PSI5OCIgZm9udC1mYW1pbHk9Ik1pY3Jvc29mdCBKaGVuZ0hlaSxBcmlhbCIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzU5NzQ3QiI+5oSf5ris6LOH5paZ5LiK5YKzPC90ZXh0PgogIDwvZz4KCiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNjUwIDMxMCkiPgogICAgPHJlY3Qgd2lkdGg9IjIxMCIgaGVpZ2h0PSIxNTAiIHJ4PSIyOCIgZmlsbD0iI2ZmZiIvPgogICAgPGNpcmNsZSBjeD0iNTQiIGN5PSI1NSIgcj0iMjciIGZpbGw9IiNFOEYyRkYiLz4KICAgIDxwYXRoIGQ9Ik00MCA2NUw1MCA0OUw2MSA1OUw3MiAzOCIgc3Ryb2tlPSIjM0Q4RkMwIiBzdHJva2Utd2lkdGg9IjYiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgogICAgPHRleHQgeD0iOTYiIHk9IjUxIiBmb250LWZhbWlseT0iTWljcm9zb2Z0IEpoZW5nSGVpLEFyaWFsIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjIyIiBmaWxsPSIjMTczRTRBIj7mlbjmk5rlnJbooag8L3RleHQ+CiAgICA8dGV4dCB4PSIzNSIgeT0iMTAxIiBmb250LWZhbWlseT0iTWljcm9zb2Z0IEpoZW5nSGVpLEFyaWFsIiBmb250LXdlaWdodD0iNzAwIiBmb250LXNpemU9IjE4IiBmaWxsPSIjNTk3NDdCIj5BUUnjg7tQTeODu+awo+ixoTwvdGV4dD4KICAgIDx0ZXh0IHg9IjM1IiB5PSIxMjgiIGZvbnQtZmFtaWx5PSJNaWNyb3NvZnQgSmhlbmdIZWksQXJpYWwiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM1OTc0N0IiPuiuiuaIkOaYk+aHguizh+ioijwvdGV4dD4KICA8L2c+CgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDY1IDU4NSkiPgogICAgPHJlY3Qgd2lkdGg9IjIxMCIgaGVpZ2h0PSIxNTAiIHJ4PSIyOCIgZmlsbD0iI2ZmZiIvPgogICAgPGNpcmNsZSBjeD0iNTQiIGN5PSI1NSIgcj0iMjciIGZpbGw9IiNGRkY0RDUiLz4KICAgIDxwYXRoIGQ9Ik01NCAzNUw3MCA0NVY2M0M3MCA3NSA2MyA4NCA1NCA5MEM0NSA4NCAzOCA3NSAzOCA2M1Y0NVoiIGZpbGw9IiNGMEM2NTQiLz4KICAgIDxwYXRoIGQ9Ik00NyA2MUw1MiA2Nkw2MiA1NCIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjUiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgogICAgPHRleHQgeD0iOTYiIHk9IjUxIiBmb250LWZhbWlseT0iTWljcm9zb2Z0IEpoZW5nSGVpLEFyaWFsIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjIyIiBmaWxsPSIjMTczRTRBIj7mjIHnuozntq3orbc8L3RleHQ+CiAgICA8dGV4dCB4PSIzNSIgeT0iMTAzIiBmb250LWZhbWlseT0iTWljcm9zb2Z0IEpoZW5nSGVpLEFyaWFsIiBmb250LXdlaWdodD0iNzAwIiBmb250LXNpemU9IjE4IiBmaWxsPSIjNTk3NDdCIj7oqK3lgpnlt6HmqqLoiIfmoKHmraM8L3RleHQ+CiAgPC9nPgo8L2c+Cgo8IS0tIOizh+aWmea1geeuremgrSAtLT4KPGcgc3Ryb2tlPSIjOERFMEQxIiBzdHJva2Utd2lkdGg9IjgiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWRhc2hhcnJheT0iMTIgMTMiPgogIDxwYXRoIGQ9Ik0yMTIgMzU1QzI1NSAzMjUgMjc4IDMxNyAzMTAgMzEyIi8+CiAgPHBhdGggZD0iTTYwNCAzNjBDNjMwIDM2NSA2NDIgMzY3IDY1NyAzNzIiLz4KICA8cGF0aCBkPSJNMjczIDY1NUMzMDYgNjMwIDMzMCA2MjAgMzUwIDYxMCIvPgo8L2c+Cgo8dGV4dCB4PSI1MCIgeT0iNzAiIGZpbGw9IiNEOUY4RjEiIGZvbnQtZmFtaWx5PSJNaWNyb3NvZnQgSmhlbmdIZWksQXJpYWwiIGZvbnQtc2l6ZT0iMzgiIGZvbnQtd2VpZ2h0PSI5MDAiPlBFQVMg5ris56uZ5Zyo5YGa5LuA6bq877yfPC90ZXh0Pgo8dGV4dCB4PSI1MiIgeT0iMTEwIiBmaWxsPSIjOUVEQkQyIiBmb250LWZhbWlseT0iTWljcm9zb2Z0IEpoZW5nSGVpLEFyaWFsIiBmb250LXNpemU9IjIyIiBmb250LXdlaWdodD0iNzAwIj7mjIHnuozop4DmuKzjg7vos4fmlpnlgrPovLjjg7voppboprrljJbjg7voqK3lgpnntq3orbc8L3RleHQ+Cjwvc3ZnPg==" alt="Q版PEAS監測設備、資料傳輸與數據視覺化插畫"></div>
+      <div class="station-copy">
+        <span class="section-kicker light">ABOUT PEAS</span>
+        <h2>PEAS 觀測站在做什麼？</h2>
+        <p>本網站以「環境觀測資訊」為核心設計。正式版本可依實際 PEAS 設備，放入測站位置、設備照片、感測器型號、監測頻率、資料傳輸方式與維護資訊。</p>
+        <div class="station-features">
+          <div><span>01</span><strong>持續觀測</strong><p>定時蒐集環境數值，協助掌握不同時段變化。</p></div>
+          <div><span>02</span><strong>數據視覺化</strong><p>將複雜監測數據轉成大字體資訊卡與趨勢圖。</p></div>
+          <div><span>03</span><strong>民眾易讀</strong><p>以 AQI 分級、圖示與生活化文字降低閱讀門檻。</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="aqi">
+      <div class="section-head"><div><span class="section-kicker">AQI GUIDE</span><h2>AQI 顏色怎麼看？</h2></div><p>AQI 是將主要污染物依健康影響換算後，以最大副指標作為該測站 AQI。</p></div>
+      <div class="aqi-guide-grid">
+        <article class="guide good"><span>0–50</span><strong>良好</strong><p>污染程度低或無污染。</p></article>
+        <article class="guide moderate"><span>51–100</span><strong>普通</strong><p>空氣品質可接受。</p></article>
+        <article class="guide sensitive"><span>101–150</span><strong>對敏感族群不健康</strong><p>敏感族群可能受到影響。</p></article>
+        <article class="guide unhealthy"><span>151–200</span><strong>對所有族群不健康</strong><p>所有人健康可能開始受到影響。</p></article>
+        <article class="guide very"><span>201–300</span><strong>非常不健康</strong><p>所有人都可能受到較嚴重健康影響。</p></article>
+        <article class="guide hazard"><span>301–500</span><strong>危害</strong><p>健康警報，應特別留意防護資訊。</p></article>
+      </div>
+      <div class="aqi-note">AQI 分級與健康意義依環境部空氣品質監測網現行說明整理；正式網站應連結或串接官方最新規範。</div>
+    </section>
+
+    <section class="public-section">
+      <div class="public-inner">
+        <span class="section-kicker light">EASY TO UNDERSTAND</span>
+        <h2>今天出門前，先看一眼空氣。</h2>
+        <p>透過清楚的顏色、數字與圖表，讓環境資訊真正成為每個人都用得到的生活資訊。</p>
+        <div class="public-cards">
+          <article><span>🚶</span><strong>一般民眾</strong><p>先看 AQI，再安排戶外活動。</p></article>
+          <article><span>👵</span><strong>敏感族群</strong><p>AQI 升高時，更應注意身體狀況與活動強度。</p></article>
+          <article><span>🏫</span><strong>校園與社區</strong><p>觀察每日趨勢，作為環境教育與活動參考。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="source">
+      <div class="section-head"><div><span class="section-kicker">OFFICIAL REFERENCE</span><h2>正式資訊與資料來源</h2></div><p>本網站為前端範本，正式即時數據請使用實際 PEAS 資料源或政府公開資料。</p></div>
+      <div class="source-grid">
+        <a class="source-card" href="https://airtw.moenv.gov.tw/" target="_blank" rel="noopener noreferrer"><span>🌤️</span><div><strong>環境部空氣品質監測網</strong><p>查詢全臺即時 AQI、污染物與空品資訊。</p></div><b>↗</b></a>
+        <a class="source-card" href="https://airtw.moenv.gov.tw/CHT/Information/Standard/AirQualityIndicatorNew.aspx" target="_blank" rel="noopener noreferrer"><span>📊</span><div><strong>AQI 指標說明</strong><p>查看 AQI 分級、污染物濃度與健康影響。</p></div><b>↗</b></a>
+        <a class="source-card" href="https://data.moenv.gov.tw/" target="_blank" rel="noopener noreferrer"><span>💾</span><div><strong>環境資料開放平臺</strong><p>取得測站基本資料與環境開放資料。</p></div><b>↗</b></a>
+      </div>
+      <div class="source-warning"><strong>正式上線前請確認：</strong>PEAS 的完整名稱、測站地址、監測項目、設備照片、資料更新頻率、API/JSON資料來源及聯絡方式，再將本頁示範數值替換為正式資料。</div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div><strong>PEAS 環境觀測站</strong><p>環境數據 × 視覺化 × 民眾易讀</p></div>
+    <div>【本頁為網站範本，正式發布前請更新聯絡方式、測站資訊、即時數據及公告內容。】</div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
